@@ -81,12 +81,6 @@ Counter|
 Survey Form|
 Great Number Game **GitHub**|
 
-Optional|
----|
-Landing Page|
-Cars and Cats|
-Content Module|
-
 ### Friday, October 6
 
 Socket.io
@@ -120,24 +114,21 @@ Message Board **GitHub**|
 
 Modularization: Turning one giant server file into several smaller files
 
-1955 API might not seem like much, but it's actually a very important assignment.  If you can complete it, you'll have pretty much all you need on the server side for a MEAN app...which is good, because on Thursday we start dealing with the client side.
+Restful Task API might not seem like much, but it's actually a very important assignment.  If you can complete it, you'll have pretty much all you need on the server side for a MEAN app...which is good, because tomorrow we start dealing with the client side.
+
+The Advanced Mongoose material is worth looking at, but officially optional.
 
 Assignments|
 ---|
 Modularized Mongoose|
 1955 API **GitHub**|
+Restful Task API **GitHub**|
+
+Optional|
+---|
+Login & Registration|
 
 ### Wednesday, October 11
-
-Advanced Mongoose
-
-Assignments|
----|
-Login & Registration **GitHub**|
-
-
-
-### Thursday, October 12
 
 Angular 4!
 
@@ -150,7 +141,7 @@ Types and Classes|
 Dojo Mall **GitHub**|
 Retro Barcode Generator **GitHub**|
 
-### Friday, October 13
+### Thursday, October 12
 
 Event listeners, nested components, inputs and output
 
@@ -165,15 +156,13 @@ Layout|
 Power Levels|
 Quote Ranks **GitHub**|
 
-## Week 3
-
-### Monday, October 16
+### Friday, October 13
 
 Angular routes and services
 
 Read Services and Routing
 
-Read Routing & Observables and Services, Promises, & HTTP.  Note that we'll be using the HTTP module tomorrow to make requests to our server once we have a full MEAN app.
+Read Routing & Observables and Services, Promises, & HTTP.  Note that we'll be using the HTTP module next week to make requests to our server once we have a full MEAN app.
 
 In the afternoon, we'll build a custom pipe to filter an array of data
 
@@ -183,7 +172,9 @@ GitHub Score **GitHub**|
 Dojo Weather Forecast|
 Project Product Management|
 
-### Tuesday, October 17
+## Week 3
+
+### Monday, October 16
 
 Full MEAN!
 
@@ -194,14 +185,22 @@ Assignments|
 Anonymous Notes|
 Team Manager **GitHub**|
 
+### Tuesday, October 17
+
+As of now, you should have all the tools you need to pass the belt exam.  The next few days are just practicing and reinforcing this knowlege.
+
+Assignments|
+---|
+GitHub Battle|
+Bicycle Marketplace **GitHub**|
+
 ### Wednesday, October 18
 
 Deployment
 
 Assignments|
 ---|
-GitHub Battle|
-Bicycle Marketplace **GitHub**|
+*watch this space*|
 
 ### Thursday, October 19
 
