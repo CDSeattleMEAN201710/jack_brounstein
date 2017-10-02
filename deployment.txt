@@ -1,0 +1,149 @@
+In these instructions anything surrounded by curlybraces {{like this}} indicates a variable that will need to be replaced before running the command
+
+
+
+Set up AWS
+
+Enter AWS, and click launch new instance.
+Select Ubuntu 16.04 LTS
+Select t2.micro
+Set security settings:
+	ssh (Choose "My IP")
+	http 0.0.0.0 (Anywhere)
+	https 0.0.0.0 (Anywhere, or don't set it)
+
+Download a .pem key from AWS
+
+Move the .pem file to an appropriate folder on your system
+
+Launch gitbash/terminal in the pem folder
+
+Enter cloud server
+Navigate to the folder where your .pem file is!
+
+(you can use the 'connect' button on Amazon AWS to get the next line of code) // ssh -i "pem-friends.pem" ubuntu@ec2-54-202-98-79.us-west-2.compute.amazonaws.com
+
+From here on out, everything will be in the ubuntu terminal: These establish some basic dependencies for deployment and the Linux server.
+
+	sudo apt-get update
+	sudo apt-get install -y build-essential openssl libssl-dev pkg-config
+
+	sudo apt-get install -y nodejs    // if the first doesnt work use:  sudo apt-get install -y nodejs-legacy
+
+	sudo apt-get install -y npm
+	sudo npm cache clean -f
+
+These install the node package manager n and updated node.
+
+	sudo npm install -g n
+	sudo n stable
+
+Install NGINX and git:
+
+	sudo apt-get install -y nginx
+	sudo apt-get install git
+
+Enter main folder:
+
+	cd /var/www
+
+Clone the project:
+
+	sudo git clone {{project file path on github}}
+
+Set up NGINX
+Go to nginx's sites-available directory :
+
+	cd /etc/nginx/sites-available
+
+Enter nano:
+
+	sudo nano {{project_name}}
+
+Paste and modify the following code into nano after hitting i:
+
+server {
+    listen 80;
+    location / {
+        proxy_pass http://{{PRIVATE-IP}}:8000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+Remove the defaults from /etc/nginx/sites-available  // should already be there, otherwise cd in
+
+	sudo rm default
+
+Create a symbolic link from sites-enabled to sites available:
+
+	sudo ln -s /etc/nginx/sites-available/{{project_name}} /etc/nginx/sites-enabled/{{project_name}}  /// Note the 2 places project name must be inserted and that there is a space between the file paths
+
+Remove the defaults from /etc/nginx/sites-enabled/
+
+	cd /etc/nginx/sites-enabled/
+	sudo rm default
+
+If you ls now, you sould see the name of your project in cyan.  If it's maroon, there was a problem with the symlink.
+
+Project Dependencies and PM2
+Install pm2 globally:
+
+	sudo npm install pm2 -g
+
+Install components! Including angular2!
+
+	cd into project folder // i.e. cd /var/www/Wall
+	sudo npm install
+
+	cd client
+	sudo npm install -g @angular/cli
+	sudo npm install
+	sudo ng  build
+
+The npm install steps above may start infinitely looping while displaying errors.  If this happens, DON'T PANIC.  Ctrl+C to cancel the installation, then continue on to the next step.  Usually everything will still work.  (There's an issue with using sudo npm install not configuring the path correctly; there are workarounds online, but they probably won't be necessary.)
+
+Mongodb
+Set up a key:
+
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+Setup mongodb in a source list:
+
+	echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+Reupdate to integrate mongo
+
+	sudo apt-get update
+
+install mongo:
+
+	sudo apt-get install -y mongodb-org
+
+create the data/db folders:
+
+	cd /
+	sudo mkdir data
+	cd data
+	sudo mkdir db
+
+Try starting Mongo:
+
+	sudo mongod  // yay, mongo!  now close it with ctrl + c
+
+Now start Mongo as a service so it will run for all your fun shit:
+
+ 	sudo service mongod start   // if you need to stop it: sudo service mongod stop
+
+get back in your project folder:
+
+	cd /var/www/{{project_name}}
+
+now let's start all this shit and cross our fingers that this works:
+pm
+	pm2 start server.js
+	/// check on it with pm2 status
+	sudo service nginx reload && sudo service nginx restart
