@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sockets</title>
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+			$(document).ready(() => {
+				console.log("jQuery!")
+
+				const socket = io.connect()
+
+				$("button").click(() => {
+					socket.emit("some sort of click counter")
+				})
+
+				socket.on("counter", number_of_clicks => {
+					$("#click_counter").text(number_of_clicks)
+				})
+
+			})
+		</script>
+	</head>
+	<body>
+		<h1>Sockets?</h1>
+		<div id="click_counter"></div>
+		<button>Click me</button>
+	</body>
+</html>
