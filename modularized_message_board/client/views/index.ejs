@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Message Board</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+	</head>
+	<body>
+		<h1>Message Board</h1>
+		<form action="/new_message" method="post">
+			<p>Name: <input type="text" name="name"></p>
+			<textarea rows=6 cols=60 name="message" placeholder="New message"></textarea>
+			<p><input type="submit" value="Post Message"></p>
+		</form>
+
+		<% for(let msg of messages.reverse()){ %>
+			<div class="message">
+				<p><strong>Name: <%= msg.name %></strong></p>
+				<p>Message: <%= msg.message %></p>
+
+				<div class="comments">
+					<% for(let comment of msg.comments){ %>
+						<p><strong>Name: <%= comment.name %></strong></p>
+						<p>Comment: <%= comment.comment %></p>						
+					<% } %>
+					<form action="/new_comment" method="post">
+						<input type="hidden" name="message_id" value="<%= msg._id %>">
+						<p>Name: <input type="text" name="name"></p>
+						<textarea rows=4 cols=40 name="comment" placeholder="New comment"></textarea>
+						<p><input type="submit" value="Post Comment"></p>
+					</form>
+				</div>
+			</div>
+		<% } %>
+	</body>
+</html>

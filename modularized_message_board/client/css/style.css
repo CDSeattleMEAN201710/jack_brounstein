@@ -1,0 +1,10 @@
+.message{
+	border: 5px dotted blue;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.comments{
+	margin-left: 20px; 
+	font-size: 0.8em
+}
