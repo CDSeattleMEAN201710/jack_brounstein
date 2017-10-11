@@ -1,0 +1,10 @@
+<h1>Hello, {{ first_name }}</h1>
+
+<ul>
+	<li *ngFor="let car of cars">
+		{{car.year}} {{car.make}} {{car.model}}
+		<ul>
+			<li *ngFor="let num of car.numbers">{{num}}</li>
+		</ul>
+	</li>
+</ul>
