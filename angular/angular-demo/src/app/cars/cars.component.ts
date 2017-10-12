@@ -31,4 +31,9 @@ export class CarsComponent implements OnInit {
     ]
   }
 
+  create_car(new_car: Car) {
+    console.log("Some event happened")
+    this.cars.push(new_car)
+  }
+
 }

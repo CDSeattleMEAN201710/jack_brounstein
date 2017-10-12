@@ -1,10 +1,7 @@
-<h1>Hello, {{ first_name }}</h1>
+<h1>Cars</h1>
 
-<ul>
-	<li *ngFor="let car of cars">
-		{{car.year}} {{car.make}} {{car.model}}
-		<ul>
-			<li *ngFor="let num of car.numbers">{{num}}</li>
-		</ul>
-	</li>
-</ul>
+<h3>Hello, {{ first_name }}</h3>
+
+<app-cars-create (add_a_car)="create_car($event)"></app-cars-create>
+
+<app-cars-detail *ngFor="let car of cars" [this_car]="car"></app-cars-detail>

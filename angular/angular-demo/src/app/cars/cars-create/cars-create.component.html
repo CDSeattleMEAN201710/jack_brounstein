@@ -1,0 +1,6 @@
+<form (submit)="create_car()">
+	<p>Make: <input type="text" name="make" [(ngModel)]="new_car.make" ></p>
+	<p>Model: <input type="text" name="model" [(ngModel)]="new_car.model"></p>
+	<p>Year: <input type="number" name="year" [(ngModel)]="new_car.year"></p>
+	<p><input type="submit" value="Create Car"></p>
+</form>
