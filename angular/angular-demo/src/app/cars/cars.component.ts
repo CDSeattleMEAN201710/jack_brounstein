@@ -27,7 +27,25 @@ export class CarsComponent implements OnInit {
         model: "Civic",
         year: 2013,
         numbers: [5,6,7,8]
-      }
+      },
+      {
+        make: "Toyota",
+        model: "Celica",
+        year: 2004,
+        numbers: [55, 3]
+      },
+      {
+        make: "Tesla",
+        model: "Model S",
+        year: 2018,
+        numbers: [12, 13]
+      },
+      {
+        make: "Ford",
+        model: "F150",
+        year: 2013,
+        numbers: [1, 50]
+      },
     ]
   }
 

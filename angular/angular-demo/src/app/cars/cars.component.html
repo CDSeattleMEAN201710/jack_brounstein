@@ -4,4 +4,5 @@
 
 <app-cars-create (add_a_car)="create_car($event)"></app-cars-create>
 
-<app-cars-detail *ngFor="let car of cars" [this_car]="car"></app-cars-detail>
+<p><input type="text" name="search" [(ngModel)]="search" placeholder="Search..."></p>
+<app-cars-detail *ngFor="let car of cars | filter:search" [this_car]="car"></app-cars-detail>

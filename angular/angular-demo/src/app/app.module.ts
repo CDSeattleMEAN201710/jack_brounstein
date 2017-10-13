@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarsDetailComponent } from './cars/cars-detail/cars-detail.component';
 import { CarsCreateComponent } from './cars/cars-create/cars-create.component';
+import { FilterPipe } from './cars/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     CarsDetailComponent,
-    CarsCreateComponent
+    CarsCreateComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

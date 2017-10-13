@@ -1,6 +1,6 @@
-<form (submit)="create_car()">
-	<p>Make: <input type="text" name="make" [(ngModel)]="new_car.make" ></p>
+<form (submit)="create_car()" #new_car_form="ngForm" >
+	<p>Make: <input type="text" name="make" [(ngModel)]="new_car.make" required minlength="4" #new_car_make="ngModel"> <span *ngIf="new_car_make.errors">ERROR!!!</span> <span *ngIf="new_car_make.errors?.required">This field is required!</span> <span *ngIf="new_car_make.errors?.minlength">The minimum requred length is {{new_car_make.errors.minlength.requiredLength}} (you entered {{new_car_make.errors.minlength.actualLength}})</span> </p>
 	<p>Model: <input type="text" name="model" [(ngModel)]="new_car.model"></p>
 	<p>Year: <input type="number" name="year" [(ngModel)]="new_car.year"></p>
-	<p><input type="submit" value="Create Car"></p>
+	<p><input type="submit" value="Create Car" [disabled]="!new_car_form.valid"></p>
 </form>
