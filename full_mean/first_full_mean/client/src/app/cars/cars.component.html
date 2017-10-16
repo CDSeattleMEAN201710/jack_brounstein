@@ -1,0 +1,8 @@
+<h1>Cars</h1>
+
+<h3>Hello, {{ first_name }}</h3>
+
+<app-cars-create (add_a_car)="create_car($event)"></app-cars-create>
+
+<p><input type="text" name="search" [(ngModel)]="search" placeholder="Search..."></p>
+<app-cars-detail *ngFor="let car of cars | filter:search" [this_car]="car"></app-cars-detail>
