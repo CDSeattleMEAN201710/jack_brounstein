@@ -1,0 +1,16 @@
+<h3>Dashboard</h3>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>ID</th>
+		<th>Created At</th>
+	</tr>
+	<tr *ngFor="let user of users; let idx = index"  >
+		<td>{{ idx + 1 }}</td>
+		<td>{{ user.name }}</td>
+		<td>{{ user._id }}</td>
+		<td>{{ user.createdAt | date:"medium" }}</td>
+	</tr>
+</table>
+<a href="/logout">Log out</a>
