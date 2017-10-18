@@ -60,7 +60,7 @@ Enter nano:
 
 	sudo nano {{project_name}}
 
-Paste and modify the following code into nano after hitting i:
+Paste and modify the following code into nano:
 
 server {
     listen 80;
